@@ -12,5 +12,6 @@
 
 	"oauth2client-logout-header": "$1 uitgelogd",
 	"oauth2client-logged-out": "U bent succesvol uitgelogd.",
-	"oauth2client-login-with-oauth2-again": "[[$1|U kunt u weer aanmelden via uw $2 account]]"
+	"oauth2client-login-with-oauth2-again": "[[$1|U kunt u weer aanmelden via uw $2 account]]",
+	"oauth2client-user-doesnot-exit": "Gebruiker bestaat niet: $1"
 }

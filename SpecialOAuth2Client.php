@@ -117,6 +117,9 @@ class SpecialOAuth2Client extends SpecialPage {
 
 		$resourceOwner = $this->_provider->getResourceOwner($accessToken);
 		$user = $this->_userHandling( $resourceOwner->toArray() );
+		if (is_null($user)) {
+			return false;
+		}
 		$user->setCookies();
 
 		global $wgOut, $wgRequest;
@@ -184,11 +187,14 @@ class SpecialOAuth2Client extends SpecialPage {
 		$user->setEmail($email);
 		$user->load();
 		if ( !( $user instanceof User && $user->getId() ) ) {
-			$user->addToDatabase();
-			// MediaWiki recommends below code instead of addToDatabase to create user but it seems to fail.
-			// $authManager = MediaWiki\Auth\AuthManager::singleton();
-			// $authManager->autoCreateUser( $user, MediaWiki\Auth\AuthManager::AUTOCREATE_SOURCE_SESSION );
-			$user->confirmEmail();
+			global $wgOut;
+			$wgOut->addWikiMsg( 'oauth2client-user-doesnot-exit', $username );
+			return null;
+			//$user->addToDatabase();
+			//// MediaWiki recommends below code instead of addToDatabase to create user but it seems to fail.
+			//// $authManager = MediaWiki\Auth\AuthManager::singleton();
+			//// $authManager->autoCreateUser( $user, MediaWiki\Auth\AuthManager::AUTOCREATE_SOURCE_SESSION );
+			//$user->confirmEmail();
 		}
 		$user->setToken();
 

@@ -5,5 +5,6 @@
 	"oauth2client-login-with-oauth2": "link text",
 	"oauth2client-youre-already-loggedin": "Message displayed on the default specialpage. tietoaccount replacement.",
 	"oauth2client-act-as-a-client-to-any-oauth2-server": "Description of the extension, see setup file",
-	"oauth2client-couldnotconnect": "Message for user when OAuth2 server is unavailable"
+	"oauth2client-couldnotconnect": "Message for user when OAuth2 server is unavailable",
+	"oauth2client-user-doesnot-exit": "Message when user doesn't exist"
 }
