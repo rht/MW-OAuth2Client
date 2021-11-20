@@ -184,7 +184,8 @@ class SpecialOAuth2Client extends SpecialPage {
 			die();
 		}
 		$user->setRealName($username);
-		$user->setEmail($email);
+		// Data Accounting modification
+		//$user->setEmail($email);
 		$user->load();
 		if ( !( $user instanceof User && $user->getId() ) ) {
 			global $wgOut;
