@@ -18,10 +18,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'This is a MediaWiki extension, and must be run from within MediaWiki.' );
 }
 class OAuth2ClientHooks {
-	public static function onPersonalUrls( array &$personal_urls, Title $title ) {
+	public static function onPersonalUrls( array &$personal_urls, Title $title, SkinTemplate $skinTemplate ) {
 
-		global $wgOAuth2Client, $wgUser, $wgRequest;
-		if( $wgUser->isLoggedIn() ) return true;
+		global $wgOAuth2Client, $wgRequest;
+		if( $skinTemplate->getUser()->isRegistered() ) return true;
 
 
 		# Due to bug 32276, if a user does not have read permissions,
